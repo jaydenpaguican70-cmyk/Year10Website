@@ -1,118 +1,179 @@
-/* Reset default margins and set up a modern font */
+//* --- Modern Reset & Variables --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+:root {
+    --bg-color: #0f172a;       /* Deep slate dark blue */
+    --card-bg: #1e293b;        /* Lighter slate for cards */
+    --accent-glow: #38bdf8;    /* Cyber cyan */
+    --text-main: #f8fafc;      /* Crisp white */
+    --text-muted: #94a3b8;     /* Soft gray */
 }
 
 body {
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
 }
 
-/* --- Hero Section --- */
+/* --- Premium Hero Section --- */
 .hero {
-    /* 1. Point to your image file */
-    background-image: url('images/websiteheader.png'); 
-    
-    /* 2. Center the image and make it scale beautifully */
+    position: relative;
+    background-image: url('images/your-header-image.jpg'); /* Ensure this path is correct! */
+    background-color: #111; /* Backup color while image loads */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
-    /* 3. Give the header a set height so the image actually has room to show */
-    height: 400px; 
-    
-    /* Optional: Center any text inside the hero section */
+    height: 450px; 
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white; 
-}
-}
-
-.hero-text {
-    font-size: 2.5rem;
-    font-weight: bold;
-    letter-spacing: 2px;
+    text-align: center;
 }
 
-/* --- Topic / Container Section --- */
+/* Dark tint over the hero image so white text pops */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.95));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--accent-glow);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+}
+
+/* --- Section Layout --- */
 .topic {
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 60px auto;
+    padding: 0 30px;
 }
 
 .topic-title {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
-.topic-title h1 {
-    font-size: 2rem;
-    color: #2c3e50;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 10px;
+.topic-title h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
-/* Adds a nice underline bar under the title */
-.topic-title h1::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 25%;
-    width: 50%;
+.title-underline {
+    width: 60px;
     height: 4px;
-    background-color: #3498db;
+    background: var(--accent-glow);
     border-radius: 2px;
+    margin: 12px auto 0;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
 }
 
-/* --- The 3-Column Grid --- */
+/* --- The Grid Layout --- */
 .topic-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px; /* Space between the cards */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
 }
 
-/* --- Individual Cards --- */
+/* --- Glassmorphism Cards --- */
 .topic-card {
-    background: white;
-    border-radius: 8px;
+    background: var(--card-bg);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Hover effect to make the cards interactive */
-.topic-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.img-container {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
 }
 
 .topic-card img {
     width: 100%;
-    height: 250px;
-    object-fit: cover; /* Keeps image proportions without stretching */
-    display: block;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* --- Card Info Area --- */
+.card-info {
+    padding: 24px;
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.8) 0%, var(--card-bg) 100%);
 }
 
 .topic-card-text {
-    padding: 20px;
-    font-size: 1.1rem;
-    text-align: center;
-    color: #2c3e50;
-    background-color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+
+/* Cute pill tags under the titles */
+.tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: var(--accent-glow);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* --- Interactive Hover Effects --- */
+.topic-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 20px 4px -10px rgba(0, 0, 0, 0.3), 0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+.topic-card:hover img {
+    transform: scale(1.06); /* Subtle zoom effect on the image */
 }
 
 /* --- Footer --- */
 .footer {
-    background-color: #2c3e50;
-    color: #a0aec0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 20px;
     text-align: center;
-    padding: 20px;
-    margin-top: 60px;
+    color: var(--text-muted);
     font-size: 0.9rem;
+    margin-top: 100px;
+}
+
+/* --- Entry Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
