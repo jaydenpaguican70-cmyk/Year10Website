@@ -14,7 +14,7 @@ body {
 /* --- Hero Section --- */
 .hero {
     /* 1. Point to your image file */
-    background-image: url('images/your-header-image.jpg'); 
+    background-image: url('images/websiteheader.png'); 
     
     /* 2. Center the image and make it scale beautifully */
     background-position: center;
