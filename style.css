@@ -13,13 +13,23 @@ body {
 
 /* --- Hero Section --- */
 .hero {
-    background: linear-gradient(135deg, #2c3e50, #3498db);
-    color: white;
-    height: 300px;
+    /* 1. Point to your image file */
+    background-image: url('images/your-header-image.jpg'); 
+    
+    /* 2. Center the image and make it scale beautifully */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* 3. Give the header a set height so the image actually has room to show */
+    height: 400px; 
+    
+    /* Optional: Center any text inside the hero section */
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    color: white; 
+}
 }
 
 .hero-text {
