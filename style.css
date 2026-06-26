@@ -7,10 +7,10 @@
 }
 
 :root {
-    --bg-color: #0f172a;       /* Deep slate dark blue */
-    --card-bg: #1e293b;        /* Lighter slate for cards */
-    --accent-glow: #38bdf8;    /* Cyber cyan */
-    --text-main: #f8fafc;      /* Crisp white */
+    --bg-color: #848547;       /* Deep slate dark blue */
+    --card-bg: #666b34;        /* Lighter slate for cards */
+    --accent-glow: #7a9743;    /* Cyber cyan */
+    --text-main: #000000;      /* Crisp white */
     --text-muted: #94a3b8;     /* Soft gray */
 }
 
@@ -23,8 +23,8 @@ body {
 /* --- Premium Hero Section --- */
 .hero {
     position: relative;
-    background-image: url('images/your-header-image.jpg'); /* Ensure this path is correct! */
-    background-color: #111; /* Backup color while image loads */
+    background-image: url('images/websiteheader.png'); /* Ensure this path is correct! */
+    background-color: #858043; /* Backup color while image loads */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
